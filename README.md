@@ -12,3 +12,16 @@ lower(substring(new.name from 2)));
 end //
 delimiter;
 ```
+
+
+### Demo: Single Time Event
+```
+delimiter//
+create event one_time_event
+on scedule at now() + internal 1 minute
+do begin
+  insert into event_audit(last_update)
+  values(now());
+end//
+delimiter;
+```
